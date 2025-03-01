@@ -1,0 +1,17 @@
+<template>
+  <div class="p-6 md:rounded-md" :class="typeClassName">
+    <p class="text-sm text-center leading-[21px]">
+      {{ text }}
+    </p>
+  </div>
+</template>
+
+<script setup lang="ts">
+const props = defineProps<{
+  text: string;
+  type: "info" | "warning";
+}>();
+const typeClassName = computed(() => {
+  return props.type === "info" ? "bg-brand-info" : "bg-brand-warning";
+});
+</script>

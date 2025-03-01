@@ -3,48 +3,21 @@
     <!-- Mobile Page Content -->
     <div class="lg:hidden">
       <div class="p-5">
-        <h1 class="text-[32px]/[38px] text-brand-blue mb-2 font-light">
+        <h1 class="text-[32px]/[38px] mb-2 font-light">
           Request<br />
           assistance from us
         </h1>
-        <p class="text-[18px]/[26px] mb-6 text-brand-blue font-light">
+        <p class="text-[18px]/[26px] mb-6 font-light">
           {{ pageDescription }}
         </p>
 
         <!-- Bullet Points Section -->
-        <div class="mb-6">
-          <h2 class="text-md mb-3 font-medium text-brand-blue">
-            We can help you:
-          </h2>
-          <ul class="list-disc pl-5 space-y-2">
-            <li
-              v-for="(point, index) in bulletPoints"
-              :key="index"
-              class="text-brand-green text-xl"
-            >
-              <span class="text-brand-blue font-normal text-base">{{
-                point
-              }}</span>
-            </li>
-          </ul>
-        </div>
+        <UiBulletPoints :points="bulletPoints" />
       </div>
-      <!-- Info Section @todo: var uztaisīt kā componenti-->
-      <div class="p-4 bg-brand-info">
-        <p
-          class="text-brand-blue font-normal text-sm text-center leading-[21px]"
-        >
-          {{ infoText }}
-        </p>
-      </div>
-
-      <!-- Warning Section -->
-      <div class="mb-12 p-4 bg-brand-warning">
-        <p
-          class="text-brand-blue font-normal text-sm text-center leading-[21px]"
-        >
-          {{ warningText }}
-        </p>
+      <!-- Info Section -->
+      <div class="mb-12">
+        <UiInfoBox :text="infoText" type="info" />
+        <UiInfoBox :text="warningText" type="warning" />
       </div>
 
       <!-- Form Section -->
@@ -57,75 +30,32 @@
         <div class="flex">
           <!-- Left Sidebar -->
           <div class="w-[324px] mr-14">
-            <nav
-              aria-label="Related pages navigation"
-              class="bg-brand-background rounded-md text-brand-blue font-medium text-sm"
-            >
-              <ul>
-                <li
-                  v-for="(link, index) in sidebarLinks"
-                  :key="index"
-                  class="block hover:text-brand-green border-b border-sidebar-divider"
-                >
-                  <div
-                    class="border-s-2 p-2 border-brand-background hover:border-brand-green"
-                  >
-                    <!-- @todo: jāuztaisa lai top left un bottom left stūri arī ir noapaļoti, pēdējam nevajaj borderi apakšā -->
-                    <NuxtLink to="/">
-                      {{ link.text }}
-                    </NuxtLink>
-                  </div>
-                </li>
-              </ul>
-            </nav>
+            <LayoutSidebar :links="sidebarLinks" />
           </div>
 
           <!-- Main Content Area -->
           <div class="flex-1 max-w-[740px]">
             <div class="max-w-[635px]">
-              <h1 class="text-[40px] text-brand-blue font-light mb-2">
+              <h1 class="text-[40px] font-light mb-2">
                 Request assistance from us
               </h1>
-              <p class="text-brand-blue text-xl mb-8 max-w-3xl font-light">
+              <p class="text-xl mb-8 max-w-3xl font-light">
                 {{ pageDescription }}
               </p>
             </div>
             <div class="">
               <div class="">
                 <!-- Bullet Points Section -->
-                <div class="mb-8">
-                  <h2 class="font-medium mb-4">We can help you:</h2>
-                  <ul class="list-disc pl-5 space-y-3 columns-2 gap-4">
-                    <li
-                      v-for="(point, index) in bulletPoints"
-                      :key="index"
-                      class="text-brand-green text-xl"
-                    >
-                      <span
-                        class="text-brand-blue font-normal text-base leading-8"
-                        >{{ point }}</span
-                      >
-                    </li>
-                  </ul>
-                </div>
+                <UiBulletPoints :points="bulletPoints" />
 
                 <!-- Info & warning Sections -->
                 <div class="grid grid-cols-2 gap-6 mb-8">
-                  <div class="p-6 bg-brand-info rounded-md">
-                    <p class="text-sm text-center leading-[21px]">
-                      {{ infoText }}
-                    </p>
-                  </div>
-
-                  <div class="p-6 bg-brand-warning rounded-md">
-                    <p class="text-sm text-center leading-[21px]">
-                      {{ warningText }}
-                    </p>
-                  </div>
+                  <UiInfoBox :text="infoText" type="info" />
+                  <UiInfoBox :text="warningText" type="warning" />
                 </div>
 
                 <!-- Form Section -->
-                <FlightForm />
+                <FormsFlightForm />
               </div>
             </div>
           </div>
@@ -136,14 +66,13 @@
 </template>
 
 <script setup lang="ts">
-import FlightForm from "~/components/FlightForm.vue";
+import FlightForm from "~/components/forms/FlightForm.vue";
+import type { Link } from "~/helpers/constants";
 
-// Page content
-const pageDescription =
+const pageDescription: string =
   "Providing assistance to passengers with reduced mobility is part of our service at airBaltic.";
 
-// Bullet points
-const bulletPoints = [
+const bulletPoints: string[] = [
   "Get to the aircraft",
   "Board the aircraft",
   "Move around the aircraft cabin if required",
@@ -151,21 +80,20 @@ const bulletPoints = [
   "Transfer between flights",
 ];
 
-// Info and warning text
-const infoText =
+const infoText: string =
   "Personal mobility equipment and guide dogs are carried free of charge.";
-const warningText =
+
+const warningText: string =
   "Please note, we are unable to provide eating assistance and medical services.";
 
-// Sidebar links for desktop
-const sidebarLinks = [
-  { text: "Contact us", url: "/" },
-  { text: "International offices and representatives", url: "/" },
-  { text: "Items left on board", url: "/" },
-  { text: "Submit a claim", url: "/" },
-  { text: "Compliment us", url: "/" },
-  { text: "Ask a question", url: "/" },
-  { text: "Request assistance from us", url: "/" },
-  { text: "Other inquiries", url: "/" },
+const sidebarLinks: Link[] = [
+  { label: "Contact us", url: "/" },
+  { label: "International offices and representatives", url: "/" },
+  { label: "Items left on board", url: "/" },
+  { label: "Submit a claim", url: "/" },
+  { label: "Compliment us", url: "/" },
+  { label: "Ask a question", url: "/" },
+  { label: "Request assistance from us", url: "/" },
+  { label: "Other inquiries", url: "/" },
 ];
 </script>

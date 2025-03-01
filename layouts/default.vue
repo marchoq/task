@@ -1,10 +1,10 @@
 <template>
   <div class="app-container font-roboto">
-    <TheHeader />
+    <LayoutHeader />
     <main id="main-content" class="main-content">
       <slot />
     </main>
-    <TheFooter />
+    <LayoutFooter />
   </div>
 </template>
 

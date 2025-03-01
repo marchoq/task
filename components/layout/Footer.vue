@@ -9,53 +9,21 @@
     <div class="lg:hidden px-4 py-8">
       <!-- Collapsible Sections -->
       <div class="space-y-4">
-        <div v-for="(section, index) in footerSections" :key="index">
-          <button
-            @click="toggleSection(index)"
-            class="flex justify-between items-center w-full py-3 text-left text-footer-title border-b border-brand-grey font-medium"
-            :aria-expanded="openSections[index]"
-            :aria-controls="`section-${index}`"
-          >
-            <span class="text-sm uppercase text-footer-title">{{
-              section.title
-            }}</span>
-            <span class="text-xl">+</span>
-          </button>
-
-          <div
-            :id="`section-${index}`"
-            v-show="openSections[index]"
-            class="mt-2 pl-4 space-y-2"
-          >
-            <ul class="space-y-2">
-              <li v-for="(link, linkIndex) in section.links" :key="linkIndex">
-                <a :href="link.url" class="text-footer-title">{{
-                  link.text
-                }}</a>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <FooterCollapsible :sections="footerLinks" />
       </div>
 
       <!-- Newsletter Signup -->
       <div class="mt-8">
-        <NewsletterSignup />
+        <FooterNewsletterSignup />
       </div>
 
       <!-- Social Media Links -->
       <div class="mt-8">
-        <SocialMediaLinks class="mt-4" />
+        <FooterSocialMediaLinks class="mt-4" />
       </div>
 
       <div class="mt-8">
-        <div class="flex">
-          <img class="w-4 h-4 mr-3" src="~/assets/images/Redirect.png" />
-          <p class="text-text-light text-xs mb-3">
-            This indicates a link to an external site that may not follow the
-            same accessibility policies.
-          </p>
-        </div>
+        <FooterExteranlSiteNotice />
       </div>
 
       <!-- Bottom Links & Copyright -->
@@ -68,14 +36,14 @@
             :href="link.url"
             class="mr-4 text-footer-title"
           >
-            <p>{{ link.text }}</p>
+            <p>{{ link.label }}</p>
           </a>
         </div>
       </div>
 
       <!-- Accepted Payment ways -->
       <div class="mt-8 pt-4 text-sm border-b border-brand-grey">
-        <PageIndexPaymentTypes class="mt-4" />
+        <FooterPaymentTypes class="mt-4" />
       </div>
 
       <!-- Badges -->
@@ -103,34 +71,13 @@
         <!-- @todo uztaisīt savu container clasi, ja tailwind nepiedāvā-->
         <div class="grid grid-cols-5 gap-8">
           <!-- 4 Link Columns -->
-          <div
-            v-for="(section, index) in footerSections"
-            :key="index"
-            class="col-span-1"
-          >
-            <h3 class="text-footer-title font-medium text-sm mb-4 uppercase">
-              {{ section.title }}
-            </h3>
-            <ul class="space-y-3 text-sm">
-              <li v-for="(link, linkIndex) in section.links" :key="linkIndex">
-                <a :href="link.url" class="text-footer-title">{{
-                  link.text
-                }}</a>
-              </li>
-            </ul>
-          </div>
+          <FooterLinksSection :footerLinks="footerLinks" />
 
           <!-- Newsletter Column -->
           <div class="col-span-1">
-            <NewsletterSignup />
+            <FooterNewsletterSignup />
             <div class="mt-8">
-              <div class="flex">
-                <img class="w-4 h-4 mr-3" src="~/assets/images/Redirect.png" />
-                <p class="text-text-light text-xs mb-3">
-                  This indicates a link to an external site that may not follow
-                  the same accessibility policies.
-                </p>
-              </div>
+              <FooterExteranlSiteNotice />
             </div>
           </div>
         </div>
@@ -150,7 +97,7 @@
 
           <!-- Accepted Payment ways -->
           <div class="text-sm border-r border-brand-grey">
-            <PageIndexPaymentTypes class="mt-4" />
+            <FooterPaymentTypes class="mt-4" />
           </div>
 
           <!-- Badges -->
@@ -165,7 +112,7 @@
             />
           </div>
 
-          <SocialMediaLinks />
+          <FooterSocialMediaLinks />
         </div>
       </div>
 
@@ -180,7 +127,7 @@
                 :href="link.url"
                 class="text-[13px] text-footer-title"
               >
-                {{ link.text }}
+                {{ link.label }}
               </a>
             </div>
             <div class="text-xs text-text-light">&copy; 2017 airBaltic</div>
@@ -192,56 +139,49 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
-
-// Track open sections for mobile accordions
-const openSections = ref([false, false, false, false]);
-
-const toggleSection = (index: number) => {
-  openSections.value[index] = !openSections.value[index];
-};
+import type { FooterLinks, Link } from "~/helpers/constants";
 
 // Footer sections data
-const footerSections = [
+const footerLinks: FooterLinks[] = [
   {
     title: "Helpful links",
     links: [
-      { text: "Book a flight", url: "/" },
-      { text: "Check-in online", url: "/" },
-      { text: "All about baggage", url: "/" },
-      { text: "Destinations", url: "/" },
+      { label: "Book a flight", url: "/" },
+      { label: "Check-in online", url: "/" },
+      { label: "All about baggage", url: "/" },
+      { label: "Destinations", url: "/" },
     ],
   },
   {
     title: "About airbaltic",
     links: [
-      { text: "Careers", url: "/" },
-      { text: "About us", url: "/" },
-      { text: "airBaltic souveniers", url: "/" },
+      { label: "Careers", url: "/" },
+      { label: "About us", url: "/" },
+      { label: "airBaltic souveniers", url: "/" },
     ],
   },
   {
     title: "airbaltic partners",
     links: [
-      { text: "Pilots Academy", url: "/" },
-      { text: "airBaltic Training", url: "/" },
-      { text: "PINS", url: "/" },
+      { label: "Pilots Academy", url: "/" },
+      { label: "airBaltic Training", url: "/" },
+      { label: "PINS", url: "/" },
     ],
   },
   {
     title: "Customer support",
     links: [
-      { text: "Contact us", url: "/" },
-      { text: "FAQs", url: "/" },
-      { text: "Request assistance", url: "/" },
+      { label: "Contact us", url: "/" },
+      { label: "FAQs", url: "/" },
+      { label: "Request assistance", url: "/" },
     ],
   },
 ];
 
 // Bottom links
-const bottomLinks = [
-  { text: "Legal information", url: "/" },
-  { text: "Site index", url: "/" },
-  { text: "Technical requirements", url: "/" },
+const bottomLinks: Link[] = [
+  { label: "Legal information", url: "/" },
+  { label: "Site index", url: "/" },
+  { label: "Technical requirements", url: "/" },
 ];
 </script>
