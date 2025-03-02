@@ -11,12 +11,12 @@
   </header>
 
   <!-- Mobile Back Link -->
-  <div class="lg:hidden p-4 flex items-center">
+  <div class="lg:hidden p-5 flex items-center">
     <ArrowLeft
-      class="w-[7px] h-[13px] text-brand-blue-ui mr-3"
+      class="w-[7px] h-[13px] text-brand-blue-ui mr-[13px]"
       :fontControlled="false"
     />
-    <p class="text-brand-blue-ui">Back to Contact us</p>
+    <p class="text-brand-blue-ui text-xs">Back to Contact us</p>
   </div>
 
   <!-- Breadcrumbs -->

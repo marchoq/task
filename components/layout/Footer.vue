@@ -6,35 +6,37 @@
     <h2 id="footer-heading" class="sr-only">Footer</h2>
 
     <!-- Mobile Footer -->
-    <div class="lg:hidden px-4 py-8">
+    <div class="lg:hidden px-5 pt-[2px]">
       <!-- Collapsible Sections -->
-      <div class="space-y-4">
+      <div class="mb-[5px]">
         <FooterCollapsible :sections="footerLinks" />
       </div>
 
       <!-- Newsletter Signup -->
-      <div class="mt-8">
+      <div class="mb-[13px]">
         <FooterNewsletterSignup />
       </div>
 
       <!-- Social Media Links -->
-      <div class="mt-8">
-        <FooterSocialMediaLinks class="mt-4" />
+      <div class="mb-[37px]">
+        <FooterSocialMediaLinks />
       </div>
 
-      <div class="mt-8">
+      <div class="mb-[33px]">
         <FooterExteranlSiteNotice />
       </div>
 
       <!-- Bottom Links & Copyright -->
-      <div class="mt-8 pt-4 text-sm border-b border-brand-grey">
-        <div class="mt-4 text-text-light">&copy; 2017 airBaltic</div>
-        <div class="flex flex-col">
+      <div class="mb-4 text-sm border-b border-brand-grey">
+        <div class="mb-[7px] text-text-light text-[13px] leading-[16px]">
+          &copy; 2017 airBaltic
+        </div>
+        <div class="flex flex-col mb-2">
           <a
             v-for="(link, index) in bottomLinks"
             :key="index"
             :href="link.url"
-            class="mr-4 text-footer-title"
+            class="mr-4 text-footer-title text-[13px] leading-9 pb-[1px]"
           >
             <p>{{ link.label }}</p>
           </a>
@@ -42,25 +44,33 @@
       </div>
 
       <!-- Accepted Payment ways -->
-      <div class="mt-8 pt-4 text-sm border-b border-brand-grey">
-        <FooterPaymentTypes class="mt-4" />
+      <div class="mb-4 text-sm border-b border-brand-grey">
+        <FooterPaymentTypes />
       </div>
 
       <!-- Badges -->
-      <div class="mt-8 pt-4 text-sm border-b border-brand-grey flex">
-        <img
-          src="~/assets/images/capa.png"
-          alt="CAPA Regional airline of the year"
-        />
-        <img
-          src="~/assets/images/most-punctual.png"
-          alt="Most punctual aviolines in the world"
-        />
+      <div class="mb-[15px] border-b border-brand-grey">
+        <div class="mb-[13px] flex items-center">
+          <img
+            src="~/assets/images/capa.png"
+            alt="CAPA Regional airline of the year"
+            class="w-auto h-[53px] pr-[22px]"
+          />
+          <img
+            src="~/assets/images/most-punctual.png"
+            alt="Most punctual aviolines in the world"
+            class="w-auto h-auto"
+          />
+        </div>
       </div>
 
       <!-- Security -->
-      <div class="mt-8 pt-4 text-sm">
-        <img src="~/assets/images/geo-trust.png" alt="Secured by GeoTrust" />
+      <div class="pb-[49px]">
+        <img
+          src="~/assets/images/geo-trust.png"
+          alt="Secured by GeoTrust"
+          class="w-auto h-auto"
+        />
       </div>
     </div>
 
@@ -76,7 +86,7 @@
           <!-- Newsletter Column -->
           <div class="col-span-1">
             <FooterNewsletterSignup />
-            <div class="mt-8">
+            <div class="mb-8">
               <FooterExteranlSiteNotice />
             </div>
           </div>

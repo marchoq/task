@@ -1,10 +1,10 @@
 <template>
-  <div class="form-part p-6 border-b border-brand-grey md:flex">
-    <div class="w-[256px] mr-8">
-      <h2 class="text-base font-medium text-brand-blue mb-2">
+  <div class="px-5 pt-4 pb-[17px] border-b border-brand-grey md:flex">
+    <div class="md:w-[256px] md:mr-8 mb-5">
+      <h2 class="font-medium text-brand-blue mb-[7px] leading-[19px]">
         Contact details
       </h2>
-      <p class="mb-6 text-xs font-normal text-text-description">
+      <p class="text-xs font-normal text-text-description leading-5">
         Something also goes here, so it doesn't look that lonely down here
       </p>
     </div>
@@ -29,16 +29,11 @@
       />
 
       <!-- Phone -->
-      <div class="mb-4">
+      <div>
         <div class="flex">
-          <div class="mr-4">
-            <label
-              for="code"
-              class="block text-xs font-normal text-brand-blue mb-1"
-            >
-              Country code
-            </label>
-            <UiDropdown class="w-24" name="code" />
+          <div class="mr-[15px]">
+            <UiLabel id="country-code" label="Country code" />
+            <UiCountryCode class="w-[100px]" name="country-code" />
           </div>
           <UiInput
             id="phone"

@@ -1,12 +1,6 @@
 <template>
   <div class="mb-4">
-    <label
-      v-if="showLabel"
-      :for="id"
-      class="block text-xs font-normal text-brand-blue mb-1"
-    >
-      {{ label }}
-    </label>
+    <UiLabel v-if="label" :id="id" :label="label" />
     <input
       :id="id"
       :value="value"
@@ -17,7 +11,8 @@
       :min="min"
       :max="max"
       :aria-label="ariaLabel"
-      class="w-full px-4 py-2 border border-brand-grey focus:ring-blue-500 focus:border-blue-500"
+      class="w-full px-2 py-[13px] border border-brand-grey leading-5 placeholder:text-form-placeholder"
+      :class="inputStyleClasses"
     />
   </div>
 </template>
@@ -48,10 +43,6 @@ defineProps({
     type: String,
     default: "",
   },
-  showLabel: {
-    type: Boolean,
-    default: true,
-  },
   min: {
     type: String,
     default: true,
@@ -63,6 +54,10 @@ defineProps({
   ariaLabel: {
     type: String,
     default: true,
+  },
+  inputStyleClasses: {
+    type: String,
+    default: "",
   },
 });
 

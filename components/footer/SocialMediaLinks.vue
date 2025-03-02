@@ -6,10 +6,10 @@
         :key="index"
         :href="item.url"
         :aria-label="`Follow us on ${item.name}`"
-        class="flex items-center justify-center w-12 h-12 rounded-full bg-social-media-background"
+        class="flex items-center justify-center w-12 h-12 rounded-full bg-social-media-background mr-[11px]"
       >
         <span class="sr-only">{{ item.name }}</span>
-        <img :src="item.src" :alt="item.name" class="w-5 h-5" />
+        <img :src="item.src" :alt="item.name" class="w-auto h-auto" />
       </a>
     </div>
   </div>

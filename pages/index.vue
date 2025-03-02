@@ -2,8 +2,8 @@
   <div class="text-brand-blue">
     <!-- Mobile Page Content -->
     <div class="lg:hidden">
-      <div class="p-5">
-        <h1 class="text-[32px]/[38px] mb-2 font-light">
+      <div class="px-5">
+        <h1 class="text-[32px]/[38px] mb-[23px] font-light">
           Request<br />
           assistance from us
         </h1>
@@ -12,7 +12,7 @@
         </p>
 
         <!-- Bullet Points Section -->
-        <UiBulletPoints :points="bulletPoints" />
+        <UiBulletPoints class="mb-[26px]" :points="bulletPoints" />
       </div>
       <!-- Info Section -->
       <div class="mb-12">

@@ -1,12 +1,20 @@
 <template>
   <div>
     <Listbox v-model="selected">
-      <div class="relative mt-1">
+      <div class="relative">
         <ListboxButton
-          class="relative w-full py-2 pl-3 pr-10 text-left bg-white cursor-pointer border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+          class="relative w-full px-[17px] py-[13px] text-left bg-white cursor-pointer border border-gray-300 focus:outline-none leading-5"
         >
-          <span class="block truncate">{{ selected.name }}</span>
-          <span class="absolute inset-y-0 right-0 flex items-center pr-3">
+          <span v-if="selected.name" class="block truncate">{{
+            selected.name
+          }}</span>
+          <span v-else class="block truncate text-form-placeholder">{{
+            placeholder
+          }}</span>
+          <span
+            class="absolute inset-y-0 right-0 flex items-center pr-3"
+            :class="iconClasses"
+          >
             <svg
               width="11"
               height="7"
@@ -67,8 +75,7 @@
   </div>
 </template>
 
-<script setup>
-import { ref } from "vue";
+<script setup lang="ts">
 import {
   Listbox,
   ListboxButton,
@@ -76,13 +83,20 @@ import {
   ListboxOption,
 } from "@headlessui/vue";
 
-// Sample list items
-const items = ref([
-  { id: 1, name: "+371" },
-  { id: 2, name: "+372" },
-  { id: 3, name: "+373" },
-]);
+const props = defineProps<{
+  name: string;
+  items: any;
+  placeholder?: string;
+  iconClasses?: string;
+}>();
 
-const selected = ref(items.value[0]);
+const selected = ref({
+  name: "",
+}); // @todo: fix it
+
+onMounted(() => {
+  if (!props.placeholder) {
+    selected.value = props.items[0];
+  }
+});
 </script>
-<!-- @todo: should make it reusable -->

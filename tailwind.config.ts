@@ -24,6 +24,7 @@ module.exports = {
         "text-light": "#999999",
         "sidebar-divider": "#E2E4E9",
         "social-media-background": "#E9E9E9",
+        "form-placeholder": "#B4B9C4",
       },
       fontFamily: {
         sans: ["Roboto", "sans-serif"],

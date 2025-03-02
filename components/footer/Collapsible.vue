@@ -2,22 +2,22 @@
   <div v-for="(section, index) in sections" :key="index">
     <button
       @click="toggleSection(index)"
-      class="flex justify-between items-center w-full py-3 text-left text-footer-title border-b border-brand-grey font-medium"
+      class="flex justify-between items-center w-full pb-[6px] pt-2 text-left text-footer-title border-b border-brand-grey font-medium"
       :aria-expanded="openSections[index]"
       :aria-controls="`section-${index}`"
     >
-      <span class="text-sm uppercase text-footer-title">{{
+      <span class="text-sm uppercase text-footer-title leading-8">{{
         section.title
       }}</span>
-      <span class="text-xl">+</span>
+      <span class="text-xl pr-[1px]">+</span>
     </button>
 
     <div
       :id="`section-${index}`"
       v-show="openSections[index]"
-      class="mt-2 pl-4 space-y-2"
+      class="mt-2 pl-4"
     >
-      <ul class="space-y-2">
+      <ul class="">
         <li v-for="(link, linkIndex) in section.links" :key="linkIndex">
           <a :href="link.url" class="text-footer-title">{{ link.label }}</a>
         </li>

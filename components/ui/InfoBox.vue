@@ -1,5 +1,5 @@
 <template>
-  <div class="p-6 md:rounded-md" :class="typeClassName">
+  <div class="py-[23px] px-[25px] md:rounded-md" :class="typeClassName">
     <p class="text-sm text-center leading-[21px]">
       {{ text }}
     </p>

@@ -1,15 +1,27 @@
 <template>
-  <div class="payment-types">
+  <div class="mb-[12px]">
     <div class="flex">
       <a
         v-for="(paymentType, index) in paymentTypes"
         :key="index"
         :href="paymentType.url"
         :aria-label="`Follow us on ${paymentType.name}`"
-        class="flex items-center justify-center w-12 h-12 rounded-full bg-social-media-background"
+        class="flex items-center justify-center"
       >
         <span class="sr-only">{{ paymentType.name }}</span>
-        <img :src="paymentType.src" :alt="paymentType.name" class="w-5 h-5" />
+        <img
+          :src="paymentType.src"
+          :alt="paymentType.name"
+          class="w-auto h-auto pr-[10px]"
+        />
+      </a>
+      <a href="/" aria-label="More payment types" class="">
+        <span class="sr-only">More payment types</span>
+        <p
+          class="text-footer-title underline text-xs leading-9 pl-[10px] decoration-brand-green underline-offset-0"
+        >
+          more
+        </p>
       </a>
     </div>
   </div>

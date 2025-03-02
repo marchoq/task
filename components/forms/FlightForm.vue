@@ -1,21 +1,24 @@
 <template>
   <form
     @submit.prevent="submitForm"
-    class="user-form bg-brand-background md:rounded-lg overflow-hidden mb-4"
+    class="user-form bg-brand-background md:rounded-lg overflow-hidden"
   >
-    <!-- Part 1: Contact details -->
+    <!-- Contact details -->
     <FormsContactDetails :form="form" />
 
     <!-- Dynamic Additional Information Parts -->
     <FormsFlightDetails :additionalParts="additionalParts" />
 
-    <div class="p-6 md:flex">
-      <p class="text-xs text-text-description mb-7 w-[256px] mr-8">
-        By submitting this form you agree to airBaltic’s Privacy Policy
+    <div class="px-5 pt-8 md:flex mb-[45px]">
+      <p
+        class="text-xs text-text-description mb-[25px] w-[243px] md:w-[256px] mr-8 leading-5"
+      >
+        By submitting this form you agree to airBaltic’s
+        <a class="underline">Privacy Policy</a>
       </p>
       <button
         type="submit"
-        class="px-12 py-2 w-full md:w-auto bg-brand-blue-ui font-medium h-[47px] text-white rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+        class="px-12 py-2 w-full md:w-auto bg-brand-blue-ui font-medium h-[47px] text-white rounded-[4px] focus:outline-none"
       >
         Confirm
       </button>
