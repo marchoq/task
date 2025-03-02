@@ -1,6 +1,6 @@
 <template>
   <div class="hidden lg:block h-[110px]">
-    <div class="max-w-[1128px] mx-auto px-4 flex justify-between">
+    <div class="max-w-[1120px] mx-auto flex justify-between">
       <!-- Left Section -->
       <div class="logo-container">
         <div
@@ -15,29 +15,32 @@
       <!-- Right Section -->
       <div class="logo-container">
         <!-- Top Section -->
-        <div class="flex justify-end items-center py-4">
+        <!-- Can be refactored to components -->
+        <div class="flex justify-end items-center pt-[23px]">
           <div class="flex space-x-6">
-            <div class="flex items-center">
-              <Globe />
-              <p class="text-xs font-medium text-header-text">
-                Latvia - Latvian
-              </p>
+            <div class="flex items-center text-header-text">
+              <Globe class="mr-[9px] text-xl mb-0" />
+              <p class="text-xs font-medium leading-[14px]">Latvia - Latvian</p>
             </div>
-            <div class="flex items-center">
-              <User />
-              <p class="text-xs font-medium text-header-text">Login</p>
+            <div class="flex items-center text-header-text">
+              <User class="mr-3 text-xl mb-0" />
+              <p class="text-xs font-medium leading-[14px]">Login</p>
             </div>
-            <div class="flex items-center">
-              <Search />
-              <p class="text-xs font-medium text-header-text">Search</p>
+            <div class="flex items-center text-header-text">
+              <Search class="mr-[10px] text-xl mb-0" />
+              <p class="text-xs font-medium leading-[14px]">Search</p>
             </div>
           </div>
         </div>
 
         <!-- Bottom Navigation -->
         <nav aria-label="Main navigation" class="main-navigation">
-          <ul class="flex space-x-6 py-4">
-            <li v-for="(item, index) in items" :key="index">
+          <ul class="flex gap-[34px] py-4">
+            <li
+              v-for="(item, index) in items"
+              :key="index"
+              :class="index === items.length - 1 ? 'pl-[8px]' : ''"
+            >
               <NuxtLink to="/" class="text-header-text text-xl">
                 {{ item.label }}
               </NuxtLink>

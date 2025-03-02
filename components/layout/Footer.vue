@@ -13,7 +13,7 @@
       </div>
 
       <!-- Newsletter Signup -->
-      <div class="mb-[13px]">
+      <div>
         <FooterNewsletterSignup />
       </div>
 
@@ -77,14 +77,15 @@
     <!-- Desktop Footer -->
     <div class="hidden lg:block">
       <!-- Top Row - 5 Columns -->
-      <div class="max-w-[1128px] mx-auto px-4 py-12">
-        <!-- @todo uztaisīt savu container clasi, ja tailwind nepiedāvā-->
-        <div class="grid grid-cols-5 gap-8">
-          <!-- 4 Link Columns -->
-          <FooterLinksSection :footerLinks="footerLinks" />
+      <div class="max-w-[1120px] mx-auto pt-[37px]">
+        <div class="flex justify-between">
+          <div class="grid grid-cols-4 w-[712px] gap-[49px]">
+            <!-- 4 Link Columns -->
+            <FooterLinksSection :footerLinks="footerLinks" />
+          </div>
 
           <!-- Newsletter Column -->
-          <div class="col-span-1">
+          <div class="col-span-1 w-[284px]">
             <FooterNewsletterSignup />
             <div class="mb-8">
               <FooterExteranlSiteNotice />
@@ -94,53 +95,62 @@
       </div>
 
       <!-- Middle Row - Social Media Icons -->
-      <div class="border-t border-gray-200">
-        <!-- @todo lapas izmēru vajag, kā css klasi -->
-        <div class="max-w-[1128px] mx-auto px-4 py-6 flex">
-          <!-- Security -->
-          <div class="text-sm border-r border-brand-grey">
-            <img
-              src="~/assets/images/geo-trust.png"
-              alt="Secured by GeoTrust"
-            />
-          </div>
+      <div class="border-gray-200">
+        <!-- @todo lapas izmēru vajag, kā css klasi vai kā mainīgo -->
+        <div class="max-w-[1120px] mx-auto pt-6 pb-7 flex justify-between">
+          <div class="flex">
+            <!-- Security -->
+            <div class="border-r border-brand-grey mr-[41px]">
+              <div class="mr-[41px]">
+                <img
+                  src="~/assets/images/geo-trust.png"
+                  alt="Secured by GeoTrust"
+                />
+              </div>
+            </div>
 
-          <!-- Accepted Payment ways -->
-          <div class="text-sm border-r border-brand-grey">
-            <FooterPaymentTypes class="mt-4" />
-          </div>
+            <!-- Accepted Payment ways -->
+            <div class="border-r border-brand-grey mr-[39px]">
+              <FooterPaymentTypes class="mr-[40px]" />
+            </div>
 
-          <!-- Badges -->
-          <div class="text-sm flex">
-            <img
-              src="~/assets/images/capa.png"
-              alt="CAPA Regional airline of the year"
-            />
-            <img
-              src="~/assets/images/most-punctual.png"
-              alt="Most punctual aviolines in the world"
-            />
+            <!-- Badges -->
+            <div class="flex mr-[90px]">
+              <img
+                src="~/assets/images/capa.png"
+                alt="CAPA Regional airline of the year"
+                class="mr-[22px] h-[53px]"
+              />
+              <div class="relative w-[107px]">
+                <img
+                  src="~/assets/images/most-punctual.png"
+                  alt="Most punctual aviolines in the world"
+                  class="absolute bottom-[1px]"
+                />
+              </div>
+            </div>
           </div>
-
           <FooterSocialMediaLinks />
         </div>
       </div>
 
       <!-- Bottom Row -->
       <div class="border-t border-gray-200 h-[80px]">
-        <div class="max-w-[1128px] mx-auto px-4 py-6">
+        <div class="max-w-[1120px] mx-auto pt-[13px]">
           <div class="flex justify-between items-center">
-            <div class="flex space-x-6">
+            <div class="flex space-x-[51px]">
               <a
                 v-for="(link, index) in bottomLinks"
                 :key="index"
                 :href="link.url"
-                class="text-[13px] text-footer-title"
+                class="text-[13px] text-footer-title leading-9"
               >
                 {{ link.label }}
               </a>
             </div>
-            <div class="text-xs text-text-light">&copy; 2017 airBaltic</div>
+            <div class="text-[13px] text-text-light leading-4">
+              &copy; 2017 airBaltic
+            </div>
           </div>
         </div>
       </div>

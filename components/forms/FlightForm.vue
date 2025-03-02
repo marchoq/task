@@ -9,19 +9,23 @@
     <!-- Dynamic Additional Information Parts -->
     <FormsFlightDetails :additionalParts="additionalParts" />
 
-    <div class="px-5 pt-8 md:flex mb-[45px]">
-      <p
-        class="text-xs text-text-description mb-[25px] w-[243px] md:w-[256px] mr-8 leading-5"
-      >
-        By submitting this form you agree to airBaltic’s
-        <a class="underline">Privacy Policy</a>
-      </p>
-      <button
-        type="submit"
-        class="px-12 py-2 w-full md:w-auto bg-brand-blue-ui font-medium h-[47px] text-white rounded-[4px] focus:outline-none"
-      >
-        Confirm
-      </button>
+    <div class="px-5 pt-8 md:flex mb-[45px] md:mb-9 md:pt-8 md:pl-6">
+      <div class="md:w-[250px] md:mr-8">
+        <p
+          class="text-xs text-text-description mb-[25px] md:mb-0 w-[243px] md:w-[200px] mr-8 leading-5 md:pt-[6px] md:mr-8"
+        >
+          By submitting this form you agree to airBaltic’s
+          <a class="underline">Privacy Policy</a>
+        </p>
+      </div>
+      <div class="flex-1 md:pl-[38px] md:pr-10">
+        <button
+          type="submit"
+          class="px-12 py-2 w-full md:px-[51px] md:py-[19px] md:w-auto bg-brand-blue-ui font-medium h-[47px] text-white rounded-[4px] focus:outline-none md:leading-[14px] md:h-auto"
+        >
+          Confirm
+        </button>
+      </div>
     </div>
   </form>
 </template>

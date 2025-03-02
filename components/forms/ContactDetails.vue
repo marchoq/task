@@ -1,6 +1,8 @@
 <template>
-  <div class="px-5 pt-4 pb-[17px] border-b border-brand-grey md:flex">
-    <div class="md:w-[256px] md:mr-8 mb-5">
+  <div
+    class="px-5 pt-4 md:pt-[29px] pb-[17px] border-b border-brand-grey md:flex"
+  >
+    <div class="md:w-[250px] md:mr-8 mb-5 md:pl-1">
       <h2 class="font-medium text-brand-blue mb-[7px] leading-[19px]">
         Contact details
       </h2>
@@ -9,7 +11,7 @@
       </p>
     </div>
 
-    <div class="flex-1">
+    <div class="flex-1 md:pl-[42px] md:pr-10">
       <!-- Name & Surname -->
       <UiInput
         id="fullName"

@@ -10,7 +10,7 @@
         class="block hover:text-brand-green border-b border-sidebar-divider"
       >
         <div
-          class="border-s-2 p-2 border-brand-background hover:border-brand-green"
+          class="border-s-2 px-[22px] pt-3 pb-[10px] border-brand-background hover:border-brand-green leading-4"
         >
           <!-- @todo: jāuztaisa lai top left un bottom left stūri arī ir noapaļoti, pēdējam nevajaj borderi apakšā -->
           <NuxtLink to="/">

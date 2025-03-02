@@ -1,12 +1,12 @@
 <template>
   <div>
-    <div class="flex">
+    <div class="flex gap-[11px]">
       <a
         v-for="(item, index) in socialMediaLinks"
         :key="index"
         :href="item.url"
         :aria-label="`Follow us on ${item.name}`"
-        class="flex items-center justify-center w-12 h-12 rounded-full bg-social-media-background mr-[11px]"
+        class="flex items-center justify-center w-12 h-12 rounded-full bg-social-media-background"
       >
         <span class="sr-only">{{ item.name }}</span>
         <img :src="item.src" :alt="item.name" class="w-auto h-auto" />

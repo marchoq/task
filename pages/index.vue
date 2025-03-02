@@ -26,7 +26,7 @@
 
     <!-- Desktop Page Content -->
     <div class="hidden lg:block">
-      <div class="max-w-[1128px] mx-auto px-4 py-8">
+      <div class="max-w-[1120px] mx-auto pt-12">
         <div class="flex">
           <!-- Left Sidebar -->
           <div class="w-[324px] mr-14">
@@ -35,21 +35,21 @@
 
           <!-- Main Content Area -->
           <div class="flex-1 max-w-[740px]">
-            <div class="max-w-[635px]">
-              <h1 class="text-[40px] font-light mb-2">
+            <div class="max-w-[635px] mb-7">
+              <h1 class="text-[40px] font-light mb-7 leading-[47px]">
                 Request assistance from us
               </h1>
-              <p class="text-xl mb-8 max-w-3xl font-light">
+              <p class="text-xl max-w-3xl font-light">
                 {{ pageDescription }}
               </p>
             </div>
-            <div class="">
-              <div class="">
+            <div>
+              <div>
                 <!-- Bullet Points Section -->
-                <UiBulletPoints :points="bulletPoints" />
+                <UiBulletPoints :points="bulletPoints" class="mb-[25px]" />
 
                 <!-- Info & warning Sections -->
-                <div class="grid grid-cols-2 gap-6 mb-8">
+                <div class="grid grid-cols-2 gap-5 mb-8">
                   <UiInfoBox :text="infoText" type="info" />
                   <UiInfoBox :text="warningText" type="warning" />
                 </div>

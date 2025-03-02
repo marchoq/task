@@ -1,7 +1,7 @@
 <template>
   <div class="app-container font-roboto">
     <LayoutHeader />
-    <main id="main-content" class="mb-[17px]">
+    <main id="main-content" class="mb-[17px] md:mb-[66px]">
       <slot />
     </main>
     <LayoutFooter />

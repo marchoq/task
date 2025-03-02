@@ -1,15 +1,10 @@
 <template>
-  <div class="px-5 pt-[31px] pb-9 border-b border-brand-grey md:flex">
-    <div class="md:w-[256px] md:mr-8">
-      <h2 class="font-medium text-brand-blue mb-[7px] leading-[19px]">
-        Select flight
-      </h2>
-      <p class="mb-[21px] text-xs font-normal text-text-description leading-5">
-        Suspendisse elementum turpis ut volutpat ultricies. Mauris eget nisl
-        diam. In vel felis in metus vulputate imperdiet vestibulum at dolor.
-      </p>
-    </div>
-    <div class="flex-1">
+  <UiFormPart title="Select flight">
+    <template v-slot:description>
+      Suspendisse elementum turpis ut volutpat ultricies. Mauris eget nisldiam.
+      In vel felis in metus vulputate imperdiet vestibulum at dolor.
+    </template>
+    <template v-slot:content>
       <div v-for="(part, index) in additionalParts" :key="index">
         <!-- Additional Field -->
         <UiInput
@@ -83,8 +78,8 @@
           Delete flight
         </button>
       </div>
-    </div>
-  </div>
+    </template>
+  </UiFormPart>
 </template>
 
 <script setup lang="ts">

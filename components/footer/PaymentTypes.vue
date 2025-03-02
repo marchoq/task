@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-[12px]">
+  <div class="mb-[12px] md:mt-[10px]">
     <div class="flex">
       <a
         v-for="(paymentType, index) in paymentTypes"
