@@ -14,45 +14,55 @@
     <div class="flex-1 md:pl-[42px] md:pr-10">
       <!-- Name & Surname -->
       <UiInput
-        id="fullName"
+        id="name"
         label="Name, surname"
-        :value="form.fullName"
         type="text"
         :required="true"
+        @update:value="store.updateField"
       />
+      <p class="text-sm text-red-600 mb-4">{{ store.errors.name }}</p>
 
       <!-- Email -->
       <UiInput
         id="email"
         label="E-mail"
-        :value="form.email"
         type="email"
         :required="true"
+        @update:value="store.updateField"
       />
+      <p class="text-sm text-red-600 mb-4">{{ store.errors.email }}</p>
 
       <!-- Phone -->
       <div>
         <div class="flex">
           <div class="mr-[15px]">
-            <UiLabel id="country-code" label="Country code" />
-            <UiCountryCode class="w-[100px]" name="country-code" />
+            <UiLabel id="countryCode" label="Country code" />
+            <!-- @todo -->
+            <UiCountryCode
+              class="w-[100px]"
+              name="countryCode"
+              @update:value="store.updateField"
+            />
+            <p class="text-sm text-red-600 mb-4">
+              {{ store.errors.countryCode }}
+            </p>
           </div>
           <UiInput
             id="phone"
             label="Phone number"
-            :value="form.phone"
             type="tel"
             :required="true"
             class="flex-1"
+            @update:value="store.updateField"
           />
         </div>
+        <p class="text-sm text-red-600 mb-4">{{ store.errors.phone }}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-defineProps<{
-  form: any; // @todo type fix
-}>();
+import { useAssistanceStore } from "~/stores/assistance";
+const store = useAssistanceStore();
 </script>

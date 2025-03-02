@@ -18,10 +18,10 @@
 </template>
 
 <script setup lang="ts">
-import { useCounterStore } from "~/stores/counter";
+import { usePageStore } from "~/stores/page";
 import type { Link } from "~/helpers/constants";
 
-const store = useCounterStore();
+const store = usePageStore();
 
 defineProps<{
   items: Link[];

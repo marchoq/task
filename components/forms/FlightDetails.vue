@@ -5,65 +5,69 @@
       In vel felis in metus vulputate imperdiet vestibulum at dolor.
     </template>
     <template v-slot:content>
-      <div v-for="(part, index) in additionalParts" :key="index">
+      <div
+        v-for="(part, index) in store.assistanceFormData.flights"
+        :key="index"
+      >
         <!-- Additional Field -->
         <UiInput
-          :id="`additionalField${index}`"
+          :id="`flightNumber${index}`"
           label="Flight number"
-          :value="part.additionalField"
           type="text"
           :required="true"
+          @update:value="store.updateField"
         />
+        <p class="text-sm text-red-600 mb-4">
+          {{ store.errors[`flightNumber${index}`] }}
+        </p>
 
         <!-- Date Fields (DD/MM/YYYY) -->
         <div class="mb-7">
-          <UiLabel :id="`dateDay${index}`" label="Flight date" />
+          <UiLabel :id="`day${index}`" label="Flight date" />
 
           <div class="flex mb-1">
             <UiInput
-              :id="`dateDay${index}`"
-              :value="part.day"
+              :id="`day${index}`"
               type="number"
               placeholder="DD"
               min="1"
               max="31"
               aria-label="Day"
               class="w-[78px] mr-[11px]"
+              @update:value="store.updateField"
             />
             <UiInput
-              :id="`dateMonth${index}`"
-              :value="part.month"
+              :id="`month${index}`"
               type="number"
               placeholder="MM"
               min="1"
               max="12"
               aria-label="Month"
               class="w-[78px] mr-[11px]"
+              @update:value="store.updateField"
             />
-            <UiYearDropdown
-              class="w-[102px]"
-              :name="`dateYear${index}`"
-              :value="part.year"
-            />
-            <!-- <UiInput
-              :id="`dateYear${index}`"
-              :value="part.year"
-              type="number"
-              placeholder="YYYY"
-              aria-label="Year"
-              class="w-[102px]"
-            /> -->
+            <!-- @todo -->
+            <UiYearDropdown class="w-[102px]" :name="`year${index}`" />
           </div>
           <p class="font-normal text-xs text-text-description mt-[-13px]">
             For example:<span class="pl-[6px]">30</span
             ><span class="pl-[6px]">8</span><span class="pl-[6px]">1972</span>
+          </p>
+          <p class="text-sm text-red-600 mb-4">
+            {{ store.errors[`day${index}`] }}
+          </p>
+          <p class="text-sm text-red-600 mb-4">
+            {{ store.errors[`month${index}`] }}
+          </p>
+          <p class="text-sm text-red-600 mb-4">
+            {{ store.errors[`year${index}`] }}
           </p>
         </div>
       </div>
 
       <div class="flex justify-start">
         <button
-          @click.prevent="addPart"
+          @click.prevent="addFlight"
           type="button"
           class="px-7 py-[14px] mr-4 rounded-md border font-bold border-brand-blue-ui text-brand-blue-ui text-sm focus:outline-none leading-[14px]"
         >
@@ -71,7 +75,7 @@
         </button>
 
         <button
-          @click.prevent="removePart"
+          @click.prevent="removeFlight"
           type="button"
           class="px-7 py-[14px] text-text-description font-bold focus:outline-none text-sm leading-[14px]"
         >
@@ -83,27 +87,19 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{
-  additionalParts: any;
-}>();
+import { useAssistanceStore } from "~/stores/assistance";
+const store = useAssistanceStore();
 
-// Add a new part
-const addPart = () => {
-  props.additionalParts.value.push({
-    additionalField: "",
-    day: "",
-    month: "",
-    year: "",
-  });
+const update = function (fieldName: string, value: any) {
+  console.log("value", fieldName, value);
+  store.updateField(fieldName, value);
 };
 
-// Remove a part
-const removePart = () => {
-  if (props.additionalParts.value.length > 1) {
-    props.additionalParts.value.splice(
-      props.additionalParts.value.length - 1,
-      1
-    );
-  }
+const addFlight = () => {
+  store.addFlight();
+};
+
+const removeFlight = () => {
+  store.removeFlight();
 };
 </script>

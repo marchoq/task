@@ -1,5 +1,5 @@
 <template>
-  <div class="md:pl-[21px] mb-[13px] md:mb-[23px]">
+  <div class="lg:pl-[21px] mb-[13px] md:mb-[23px]">
     <h3
       class="text-footer-title font-medium mb-[7px] uppercase text-sm leading-8"
     >

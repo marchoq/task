@@ -4,7 +4,7 @@
     <input
       :id="id"
       :value="value"
-      @input="updateValue"
+      @blur="updateValue"
       :type="type"
       :required="required"
       :placeholder="placeholder"
@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-defineProps({
+const props = defineProps({
   id: {
     type: String,
     required: true,
@@ -33,7 +33,7 @@ defineProps({
   },
   value: {
     type: String,
-    required: true,
+    default: "",
   },
   type: {
     type: String as PropType<"text" | "email" | "tel" | "number">,
@@ -64,6 +64,6 @@ defineProps({
 const emit = defineEmits(["update:value"]);
 
 const updateValue = (event: Event) => {
-  emit("update:value", (event.target as HTMLInputElement).value);
+  emit("update:value", props.id, (event.target as HTMLInputElement).value);
 };
 </script>

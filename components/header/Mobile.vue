@@ -30,9 +30,9 @@
 import { ref } from "vue";
 import Hamburger from "~/assets/images/Hamburger.svg";
 import AirBalticLogo from "~/assets/images/airBaltic.svg";
-import { useCounterStore } from "~/stores/counter";
+import { usePageStore } from "~/stores/page";
 
-const store = useCounterStore();
+const store = usePageStore();
 
 // Toggle mobile menu
 const toggleMobileMenu = () => {

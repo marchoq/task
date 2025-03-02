@@ -47,7 +47,7 @@
           >
             <ListboxOption
               v-for="item in items"
-              :key="item.id"
+              :key="item.value"
               v-slot="{ active, selected }"
               :value="item"
               as="template"
@@ -92,11 +92,19 @@ const props = defineProps<{
 
 const selected = ref({
   name: "",
+  value: "",
 }); // @todo: fix it
 
 onMounted(() => {
   if (!props.placeholder) {
     selected.value = props.items[0];
   }
+});
+
+const emit = defineEmits(["update:value"]);
+
+watch(selected, (newValue) => {
+  console.log("newValue", newValue.value);
+  emit("update:value", name, newValue.value);
 });
 </script>
